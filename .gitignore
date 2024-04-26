@@ -1,0 +1,15 @@
+# Ignore compiled binaries
+*.exe
+*.o
+
+# Ignore file extensions
+*.log
+*.backup
+*.tfstate
+
+# Ignore hidden and other directories
+.*
+!/.gitignore
+
+# Ignore credential files
+application_default_credentials.json
