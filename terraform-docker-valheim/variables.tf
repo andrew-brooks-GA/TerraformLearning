@@ -1,19 +1,36 @@
-variable "ServerName" {
+variable "server_name" {
   default = "My Server"
 }
 
-variable "WorldName" {
+variable "world_name" {
   default = "My World"
 }
 
-variable "ServerPublic" {
+variable "server_public" {
   default = "false"
 }
 
-variable "Timezone" {
+variable "server_pass" {
+  default = "secret"
+}
+
+variable "server_port" {
+  default = 2456
+}
+
+variable "timezone" {
   default = "EDT"
 }
 
-variable "Backups" {
+variable "backups" {
   default = "true"
 }
+
+variable "memory" {
+  default = 8192
+}
+
+variable "cpu" {
+  default = "0-4"
+}
+
