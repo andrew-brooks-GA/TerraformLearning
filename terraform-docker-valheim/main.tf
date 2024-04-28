@@ -19,9 +19,9 @@ resource "docker_image" "valheim-server" {
 resource "docker_container" "valheim-server" {
   image = docker_image.valheim-server.repo_digest
   name  = "valheim-server"
-  
+
   cpu_set = var.cpu
-  
+
   memory = var.memory
 
   ports { // Game port.
@@ -42,13 +42,13 @@ resource "docker_container" "valheim-server" {
     read_only      = false
   }
 
-// Environment variable options can be found at "https://hub.docker.com/r/lloesche/valheim-server"
+  // Environment variable options can be found at "https://hub.docker.com/r/lloesche/valheim-server"
   env = [
     "SERVER_NAME=${var.server_name}",
     "WORLD_NAME=${var.world_name}",
     "SERVER_PUBLIC=${var.server_public}",
-	"SERVER_PASS=${var.server_pass}",
-	"SERVER_PORT=${var.server_port}",
+    "SERVER_PASS=${var.server_pass}",
+    "SERVER_PORT=${var.server_port}",
     "BACKUPS=${var.backups}",
     "TZ=${var.timezone}"
   ]
