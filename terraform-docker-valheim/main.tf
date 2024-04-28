@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "docker" {
-  host    = "npipe:////.//pipe//docker_engine"
+  host = "npipe:////.//pipe//docker_engine"
 }
 
 resource "docker_image" "valheim-server" {
@@ -31,4 +31,20 @@ resource "docker_container" "valheim-server" {
     external = 2457
     protocol = "udp"
   }
+
+  volumes {
+    container_path = "/config"
+    volume_name    = "shared_volume"
+    read_only      = false
+  }
+
+  env = [
+    "SERVER_NAME=${var.ServerName}",
+    "WORLD_NAME=${var.WorldName}",
+    "SERVER_PUBLIC=${var.ServerPublic}",
+    "BACKUPS=${var.Backups}",
+    "TZ=${var.Timezone}"
+  ]
 }
+
+
